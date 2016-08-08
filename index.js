@@ -43,12 +43,10 @@ LocationHelper.prototype.mergeParams = function(params) {
  * [setParams 设置参数]
  */
 LocationHelper.prototype.setParams = function(params) {
-  if ( ({}).toString.call(params) !== '[object Object]' ) return this.mergeParams(params);
+  if ( ({}).toString.call(params) === '[object Object]' ) return this.mergeParams(params);
 
   var arr = [] , paramsArr = typeof params === 'string' ? params : this.search.replace(/^\?/,'').split('&');
 
-  if ( ({}).toString.call(params) !== '[object Object]' )
-    return this.mergeParams(params);
   for ( var i = 0; i < paramsArr.length; i++ ) {
     arr = paramsArr[i].split('=');
     this.params[arr[0]] = arr[1];
