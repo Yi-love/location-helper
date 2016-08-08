@@ -4,7 +4,7 @@
  * @param {[type]} url [description]
  *
  * eq:
- *    var location = new LocationHelper();
+ *    var locationHelper = new LocationHelper();
  */
 function LocationHelper( url ){
   var location =  document.createElement("a");
