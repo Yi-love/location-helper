@@ -10,7 +10,7 @@ function LocationHelper( url ){
   var location =  document.createElement("a");
       location.href =  url ? url : window.location.href;
 
-  this.url      = location.href.split('?');
+  this.url      = location.href.split('?')[0];
   this.hash     = location.hash;
   this.host     = location.host,
   this.hostname = location.hostname;
