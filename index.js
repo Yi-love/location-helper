@@ -48,7 +48,10 @@ LocationHelper.prototype.setParams = function(params) {
   var arr = [] , paramsArr = typeof params === 'string' ? params : this.search.replace(/^\?/,'').split('&');
 
   for ( var i = 0; i < paramsArr.length; i++ ) {
+    if ( !paramsArr[i] ) continue;
     arr = paramsArr[i].split('=');
+
+    if ( !arr[0]) continue;
     this.params[arr[0]] = arr[1];
   }
   return this;
