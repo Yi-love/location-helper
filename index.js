@@ -60,8 +60,27 @@ LocationHelper.prototype.setParams = function(params) {
  * [getParams 获取参数]
  * @return {[type]} [description]
  */
-LocationHelper.prototype.getParams = function() {
-  return this.params;
+LocationHelper.prototype.getParams = function(name) {
+  return name ? this.params[name] : this.params;
+};
+/**
+ * [removeParams 删除属性]
+ * @param  {[type]} params [description]
+ * @return {[type]}       [description]
+ */
+LocationHelper.prototype.removeParams = function(params){
+  if ( !params ){
+    this.params = {};
+    return this;
+  }
+  if (typeof params === 'string') params = [params];
+  if ( ({}).toString.call(params) !== "[object Array]" ) return this;
+  for ( var i = 0 ; i < params.length ; i++) {
+    if ( this.params.hasOwnProperty(params[i]) ) {
+      delete this.params[params[i]];
+    }
+  }
+  return this;
 };
 /**
  * [serialize 序列化]
@@ -76,7 +95,7 @@ LocationHelper.prototype.serialize = function(traditional) {
         result.push(name+'='+params[name]);
       }
     }
-    return this.url +'?'+ result.join('&');
+    return this.url + (result.length > 0 ? '?'+ result.join('&') : '');
   }
   return {url : this.url , params : this.getParams()};
 };
