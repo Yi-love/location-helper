@@ -61,7 +61,9 @@ Location Helper
 ## usage
 
 ```js
-  var locationHelper = new LocationHelper(url);
+  var locationHelper = new LocationHelper('/a');
+
+  locationHelper.mergeParams({page:1}).serialize(true);  //a?page=1
 ```
 
 ## test
