@@ -1,103 +1,154 @@
-/**
- * Jin
- * [LocationHelper url辅助类]
- * @param {[type]} url [description]
- *
- * eq:
- *    var locationHelper = new LocationHelper();
- */
-function LocationHelper( url ){
-  var location =  document.createElement("a");
-      location.href =  url ? url : window.location.href;
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["LocationHelper"] = factory();
+	else
+		root["LocationHelper"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
 
-  this.url      = location.href.split('?')[0];
-  this.hash     = location.hash;
-  this.host     = location.host,
-  this.hostname = location.hostname;
-  this.href     = location.href;
-  this.origin   = location.origin;
-  this.pathname = location.pathname;
-  this.port     = location.port;
-  this.protocol = location.protocol;
-  this.search   = location.search;
-  this.source   = location;
-  this.params   = {};
-  this.setParams();
-};
-/**
- * [mergeParams 合并参数]
- * @param  {[type]} params [description]
- * @return {[type]}        [description]
- */
-LocationHelper.prototype.mergeParams = function(params) {
-    if ( ({}).toString.call(params) !== '[object Object]' ) return this;
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
 
-    for (var name in params ) {
-      if ( params.hasOwnProperty(name) ) {
-        this.params[name] = params[name];
-      }
-    }
-    return this;
-};
-/**
- * [setParams 设置参数]
- */
-LocationHelper.prototype.setParams = function(params) {
-  if ( ({}).toString.call(params) === '[object Object]' ) return this.mergeParams(params);
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
 
-  var arr = [] , paramsArr = typeof params === 'string' ? params : this.search.replace(/^\?/,'').split('&');
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
 
-  for ( var i = 0; i < paramsArr.length; i++ ) {
-    if ( !paramsArr[i] ) continue;
-    arr = paramsArr[i].split('=');
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 
-    if ( !arr[0]) continue;
-    this.params[arr[0]] = arr[1];
-  }
-  return this;
-};
-/**
- * [getParams 获取参数]
- * @return {[type]} [description]
- */
-LocationHelper.prototype.getParams = function(name) {
-  return name ? this.params[name] : this.params;
-};
-/**
- * [removeParams 删除属性]
- * @param  {[type]} params [description]
- * @return {[type]}       [description]
- */
-LocationHelper.prototype.removeParams = function(params){
-  if ( !params ){
-    this.params = {};
-    return this;
-  }
-  if (typeof params === 'string') params = [params];
-  if ( ({}).toString.call(params) !== "[object Array]" ) return this;
-  for ( var i = 0 ; i < params.length ; i++) {
-    if ( this.params.hasOwnProperty(params[i]) ) {
-      delete this.params[params[i]];
-    }
-  }
-  return this;
-};
-/**
- * [serialize 序列化]
- * @param  {[type]} traditional [true : 传统的会添加到url后面，类似与get请求]
- * @return {[type]}             [description]
- */
-LocationHelper.prototype.serialize = function(traditional) {
-  if ( traditional ) {
-    var result = [] , params = this.getParams();
-    for (var name in params ) {
-      if ( params.hasOwnProperty(name) ) {
-        result.push(name+'='+params[name]);
-      }
-    }
-    return this.url + (result.length > 0 ? '?'+ result.join('&') : '');
-  }
-  return {url : this.url , params : this.getParams()};
-};
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
 
-module.exports = LocationHelper;
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var LocationHelper = function () {
+	    function LocationHelper(url) {
+	        _classCallCheck(this, LocationHelper);
+
+	        var location = document.createElement("a");
+	        location.href = url ? url : window.location.href;
+
+	        this.url = location.href.split('?')[0];
+	        this.hash = location.hash;
+	        this.host = location.host;
+	        this.hostname = location.hostname;
+	        this.href = location.href;
+	        this.origin = location.origin;
+	        this.pathname = location.pathname;
+	        this.port = location.port;
+	        this.protocol = location.protocol;
+	        this.search = location.search;
+	        this.source = location;
+	        this.params = {};
+	        this.setParams();
+	    }
+
+	    LocationHelper.prototype.mergeParams = function mergeParams(params) {
+	        if ({}.toString.call(params) !== '[object Object]') return this;
+
+	        for (var name in params) {
+	            if (params.hasOwnProperty(name)) {
+	                this.params[name] = params[name];
+	            }
+	        }
+	        return this;
+	    };
+
+	    LocationHelper.prototype.setParams = function setParams(params) {
+	        if ({}.toString.call(params) === '[object Object]') return this.mergeParams(params);
+
+	        var arr = [],
+	            paramsArr = typeof params === 'string' ? params : this.search.replace(/^\?/, '').split('&');
+
+	        for (var i = 0; i < paramsArr.length; i++) {
+	            if (!paramsArr[i]) continue;
+	            arr = paramsArr[i].split('=');
+
+	            if (!arr[0]) continue;
+	            this.params[arr[0]] = arr[1];
+	        }
+	        return this;
+	    };
+
+	    LocationHelper.prototype.getParams = function getParams(name) {
+	        return name ? this.params[name] : this.params;
+	    };
+
+	    LocationHelper.prototype.removeParams = function removeParams(params) {
+	        if (!params) {
+	            this.params = {};
+	            return this;
+	        }
+	        if (typeof params === 'string') params = [params];
+	        if ({}.toString.call(params) !== "[object Array]") return this;
+	        for (var i = 0; i < params.length; i++) {
+	            if (this.params.hasOwnProperty(params[i])) {
+	                delete this.params[params[i]];
+	            }
+	        }
+	        return this;
+	    };
+
+	    LocationHelper.prototype.serialize = function serialize(traditional) {
+	        if (traditional) {
+	            var result = [],
+	                params = this.getParams();
+	            for (var name in params) {
+	                if (params.hasOwnProperty(name)) {
+	                    result.push(name + '=' + params[name]);
+	                }
+	            }
+	            return this.url + (result.length > 0 ? '?' + result.join('&') : '');
+	        }
+	        return { url: this.url, params: this.getParams() };
+	    };
+
+	    return LocationHelper;
+	}();
+
+	exports.default = LocationHelper;
+	module.exports = exports['default'];
+
+/***/ }
+/******/ ])
+});
+;
