@@ -1,6 +1,10 @@
 # LocationHelper
 Location Helper
 
+```
+  npm install location-helper
+```
+
 ## logs
 
 ```
