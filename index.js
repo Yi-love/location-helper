@@ -52,7 +52,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -137,7 +137,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    result.push(name + '=' + params[name]);
 	                }
 	            }
-	            return this.url + (result.length > 0 ? '?' + result.join('&') : '');
+	            return this.origin + this.pathname + (result.length > 0 ? '?' + result.join('&') : '');
 	        }
 	        return { url: this.url, params: this.getParams() };
 	    };
@@ -148,7 +148,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = LocationHelper;
 	module.exports = exports['default'];
 
-/***/ }
+/***/ })
 /******/ ])
 });
 ;

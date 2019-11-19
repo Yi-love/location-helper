@@ -1,6 +1,6 @@
 {
   "name": "location-helper",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Window.location helper",
   "main": "index.js",
   "scripts": {

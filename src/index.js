@@ -68,7 +68,7 @@ export default class LocationHelper{
                     result.push(name+'='+params[name]);
                 }
             }
-            return this.url + (result.length > 0 ? '?'+ result.join('&') : '');
+            return this.origin + this.pathname + (result.length > 0 ? '?'+ result.join('&') : '');
         }
         return {url : this.url , params : this.getParams()};
     }
