@@ -11,7 +11,9 @@
 function LocationHelper( url ){
   var location =  document.createElement("a");
       location.href =  url ? url : window.location.href;
-
+  if (!location.origin) {
+    location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+  }
   this.url      = location.href.split('?')[0];
   this.hash     = location.hash;
   this.host     = location.host;
